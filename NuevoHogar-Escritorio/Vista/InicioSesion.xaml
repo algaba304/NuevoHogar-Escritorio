@@ -4,10 +4,91 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NuevoHogar_Escritorio.Vista"
+        xmlns:viewModel="clr-namespace:NuevoHogar_Escritorio.VistaModelo" 
+        xmlns:controles="clr-namespace:NuevoHogar_Escritorio.ControlesPersonalizados"
         mc:Ignorable="d"
-        Title="Inicio de sesión" Height="450" Width="800">
-    <Grid>
-        <Label Content="Bienvenido" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" Margin="438,41,0,0" VerticalAlignment="Top"/>
+        Title="Inicio de sesión" Height="500" Width="800"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
 
-    </Grid>
+    <Window.DataContext>
+        <viewModel:InicioSesionVistaModelo/>
+    </Window.DataContext>
+
+    <Border BorderThickness="5">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource colorBordeVentana1}" Offset="0"/>
+                <GradientStop Color="{StaticResource colorBordeVentana2}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource colorBordeVentana3}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="{StaticResource colorFondoPrimario1}" Offset="0"/>
+                <GradientStop Color="{StaticResource colorFondoPrimario2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Inicio de sesión" Foreground="White" FontSize="10" Grid.Column="0" VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnMinimizar" Background="#FF6176CD" FontSize="12" BorderThickness="0" Content="-" Foreground="White"
+                        Cursor="Hand" Grid.Column="1" Click="btnMinimizar_Click"></Button>
+                <Button x:Name="btnCerrar" Background="#FF504EB3" FontSize="12" BorderThickness="0" Content="X" Foreground="White"
+                        Cursor="Hand" Grid.Column="2" Click="btnCerrar_Click"></Button>
+            </Grid>
+
+            <StackPanel Width="500" Grid.Row="2" HorizontalAlignment="Right" Orientation="Vertical" Margin="0,35,0,0">
+                <TextBlock Text="Bienvenido" Foreground="White" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="¡Ingresa a nuestra comunidad para seguir protegiendo a los animalitos!" Foreground="White" FontSize="15" 
+                           HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <TextBlock Text="Usuario:" Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="0,15,0,0"/>
+                <TextBox x:Name="txtUsuario" FontSize="20" FontWeight="Medium" Background="Transparent" Foreground="White" 
+                         CaretBrush="AliceBlue" BorderBrush="#FF5A48B1" BorderThickness="0,0,0,3" Height="28" Width="450" 
+                         Text="{Binding NombreUsuario, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+                <TextBlock Text="Contraseña:" Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="0,35,0,0"/>
+                <controles:BindablePasswordBox Password="{Binding Contrasenia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                               HorizontalAlignment="Left" Height="30" Width="450"/>
+                <TextBlock Text="{Binding MensajeError}" Margin="0,5,0,0" Foreground="Red" Width="450" HorizontalAlignment="Left" 
+                           Height="28"/>
+                <Button x:Name="btnIniciarSesion"  Content="Iniciar sesión" Height="40" Width="450" FontSize="20" BorderThickness="0" 
+                        Margin="0,50,0,0" Foreground="White" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="2"
+                        Command="{Binding InicioSesionCommand}">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{StaticResource colorBotonPrimario}" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                    <TextBlock Text="¿No tienes una cuenta?" Foreground="Black" FontSize="15" HorizontalAlignment="Center"/>
+                    <Button x:Name="btnRegistrar" Content="Registrate" BorderThickness="0,0,0,0" Background="Transparent" Foreground="Blue" FontSize="15" HorizontalAlignment="Center"
+                               Margin="8,0,0,0" Click="btnRegistrar_Click"></Button>
+                </StackPanel>
+
+            </StackPanel>
+            <Image Source="/Imagenes/imagenLogin.png" Stretch="UniformToFill" Margin="0,0,579,0" Grid.Row="2"/>
+
+        </Grid>
+    </Border>
 </Window>

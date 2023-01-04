@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:NuevoHogar_Escritorio"
              StartupUri="Vista/InicioSesion.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="/Estilos/GUIColores.xaml"/>
     </Application.Resources>
 </Application>
