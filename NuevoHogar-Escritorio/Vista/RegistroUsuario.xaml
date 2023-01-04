@@ -1,0 +1,121 @@
+﻿<Window x:Class="NuevoHogar_Escritorio.Vista.RegistroUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NuevoHogar_Escritorio.Vista"
+        xmlns:viewModel="clr-namespace:NuevoHogar_Escritorio.VistaModelo" 
+        mc:Ignorable="d"
+        Title="Registro de usuario" Height="450" Width="800"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
+    
+    <Window.DataContext>
+        <viewModel:RegistroUsuarioVistaModelo/>
+    </Window.DataContext>
+
+    <Border BorderThickness="5">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource colorBordeVentana1}" Offset="0"/>
+                <GradientStop Color="{StaticResource colorBordeVentana2}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource colorBordeVentana3}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="{StaticResource colorFondoPrimario1}" Offset="0.79"/>
+                <GradientStop Color="{StaticResource colorFondoPrimario2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Registro de usuario" Foreground="White" FontSize="10" Grid.Column="0" VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnMinimizar" Background="#FF6176CD" FontSize="12" BorderThickness="0" Content="-" Foreground="White"
+                        Cursor="Hand" Grid.Column="1" Click="btnMinimizar_Click"></Button>
+                <Button x:Name="btnCerrar" Background="#FF504EB3" FontSize="12" BorderThickness="0" Content="X" Foreground="White"
+                        Cursor="Hand" Grid.Column="2" Click="btnCerrar_Click"></Button>
+            </Grid>
+
+            <StackPanel Width="500" Grid.Row="2" HorizontalAlignment="Right" Orientation="Vertical" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Selecciona tu rol:" Foreground="White" FontSize="15" Margin="0,0,5,0" HorizontalAlignment="Center"/>
+                    <ComboBox x:Name="cbRoles" Width="360" FontSize="15"></ComboBox>
+                </StackPanel>
+
+                <TextBlock Text="Nombre:" Foreground="White" FontSize="15" Margin="0,15,0,5" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txtNombre" FontSize="15" FontWeight="Medium" Background="Transparent" Foreground="White"
+                             CaretBrush="AliceBlue" BorderBrush="#FF5A48B1" BorderThickness="0,0,0,3" Height="28" Width="450"
+                             Text="{Binding Nombre}"/>
+
+                <TextBlock Text="Dirección:" Foreground="White" FontSize="15" Margin="0,15,0,5" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txtDireccion" FontSize="15" FontWeight="Medium" Background="Transparent" Foreground="White"
+                             CaretBrush="AliceBlue" BorderBrush="#FF5A48B1" BorderThickness="0,0,0,3" Height="28" Width="450"
+                             Text="{Binding Direccion}" />
+
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                    <StackPanel Orientation="Vertical" Width="250">
+                        <TextBlock Text="Fecha:" Foreground="White" FontSize="15" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <DatePicker x:Name="dpFecha" Width="200" Height="28" FontSize="12" Text="{Binding FechaNacmiento}"/>
+                        <TextBlock Text="Usuario:" Foreground="White" FontSize="15" Margin="0,15,0,5" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txtNombreUsuario" FontSize="15" FontWeight="Medium" Background="Transparent" Foreground="White"
+                             CaretBrush="AliceBlue" BorderBrush="#FF5A48B1" BorderThickness="0,0,0,3" Height="28" Width="200"
+                             Text="{Binding NombreUsuario}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="250">
+                        <TextBlock Text="Telefono:" Foreground="White" FontSize="15" Margin="0,0,0,5" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txtTelefono" FontSize="15" FontWeight="Medium" Background="Transparent" Foreground="White"
+                             CaretBrush="AliceBlue" BorderBrush="#FF5A48B1" BorderThickness="0,0,0,3" Height="28" Width="200"
+                             Text="{Binding NumeroTelefono}"/>
+                        <TextBlock Text="Contraseña:" Foreground="White" FontSize="15" Margin="0,15,0,5" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txtContrasenia" FontSize="15" FontWeight="Medium" Background="Transparent" Foreground="White"
+                             CaretBrush="AliceBlue" BorderBrush="#FF5A48B1" BorderThickness="0,0,0,3" Height="28" Width="200"
+                             Text="{Binding Contrasenia}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                    <Button x:Name="btnRegistrar"  Content="Registrar" Height="40" Width="200" FontSize="20" BorderThickness="0" 
+                        Margin="25,0,50,0" Foreground="White" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="2"
+                        >
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="{StaticResource colorBotonPrimario}" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnCancelar"  Content="Cancelar" Height="40" Width="200" FontSize="20" BorderThickness="0" 
+                        Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Left" Cursor="Hand" Grid.Row="2"
+                        Click="btnCancelar_Click">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="{StaticResource colorBotonPrimario}" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button> 
+                </StackPanel>
+            </StackPanel>
+            
+            <Image Source="/Imagenes/imagenLogin.png" Stretch="UniformToFill" Margin="0,0,579,0" Grid.Row="2"/>
+        </Grid>
+    </Border>
+</Window>

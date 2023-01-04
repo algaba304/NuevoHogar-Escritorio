@@ -1,0 +1,54 @@
+﻿<Window x:Class="NuevoHogar_Escritorio.Vista.Homepage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:NuevoHogar_Escritorio.Vista"
+        xmlns:viewModel="clr-namespace:NuevoHogar_Escritorio.VistaModelo"
+        mc:Ignorable="d"
+        Title="Homepage" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <viewModel:InicioSesionVistaModelo/>
+    </Window.DataContext>
+    
+    <Border BorderThickness="1">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource colorBordeVentana1}" Offset="0"/>
+                <GradientStop Color="{StaticResource colorBordeVentana2}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource colorBordeVentana3}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Menu de navegación-->
+            <Border Grid.Column="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,1">
+                        <GradientStop Color="{StaticResource colorFondoSecundario1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource colorFondoPrimario2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <!--Homepage-->
+            <Border Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0,1">
+                        <GradientStop Color="{StaticResource colorFondoPrimario1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource colorFondoPrimario2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
